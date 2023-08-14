@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Alerta from '../components/Alerta'
+import clienteAxios from '../config/clienteAxios'
 
 const Registrar = () => {
     const [ nombre, setNombre ] = useState('')
@@ -39,6 +40,24 @@ const Registrar = () => {
         setAlerta({})
 
         // Crear el usuario en la API
+        try {
+            const { data } = await clienteAxios.post(`/usuarios`, {nombre, email, password} )
+
+            setAlerta({
+                msg: data.msg,
+                error: false
+            })
+
+            setNombre('')
+            setEmail('')
+            setPassword('')
+            setRepetirPassword('')
+        } catch (error) {
+            setAlerta({
+                msg: error.response.data.msg,
+                error: true
+            })
+        }
 
     }
 
