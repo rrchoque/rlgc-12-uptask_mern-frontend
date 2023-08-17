@@ -6,6 +6,7 @@ import Alerta from '../components/Alerta'
 const NuevoPassword = () => {
 
     const [password, setPassword] = useState('')
+    const [ repetirPassword, setRepetirPassword ] = useState('')
     const [tokenValido, setTokenValido] = useState(false)
     const [alerta, setAlerta] = useState({})
     const [passwordModificado, setPasswordModificado] = useState(false)
@@ -31,9 +32,17 @@ const NuevoPassword = () => {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        if(password.length < 6) {
+        if(password !== repetirPassword ) {
             setAlerta({
-                msg: 'El Password debe ser minimo de 6 caracteres',
+                msg: 'Los password no son iguales',
+                error: true
+            })
+            return
+        }
+
+        if(password.length < 6 ) {
+            setAlerta({
+                msg: 'El Password es muy corto, agrega minimo 6 caracteres',
                 error: true
             })
             return
@@ -84,6 +93,20 @@ const NuevoPassword = () => {
                             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="my-5">
+                        <label 
+                            className="uppercase text-gray-600 block text-xl font-bold"
+                            htmlFor="password2"
+                        >Repetir Password</label>
+                        <input
+                            id="password2"
+                            type="password"
+                            placeholder="Repetir tu Password"
+                            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+                            value={repetirPassword}
+                            onChange={e => setRepetirPassword(e.target.value)}
                         />
                     </div>
                     <input 
