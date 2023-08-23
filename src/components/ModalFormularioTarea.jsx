@@ -1,6 +1,8 @@
 import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import useProyectos from '../hooks/useProyectos'
+import Alerta from './Alerta'
+import { useParams } from 'react-router-dom'
 
 const PRIORIDAD = ['Baja', 'Media', 'Alta']
 
@@ -11,7 +13,31 @@ const ModalFormularioTarea = () => {
     const [fechaEntrega, setFechaEntrega] = useState('')
     const [prioridad, setPrioridad] = useState('')
 
-    const { modalFormularioTarea, handleModalTarea } = useProyectos();
+    const params = useParams()
+
+    const { modalFormularioTarea, handleModalTarea, alerta, submitTarea } = useProyectos();
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+
+        if([nombre, descripcion, fechaEntrega, prioridad].includes('') ) {
+            mostrarAlerta({
+                msg: 'Todos los campos son obligatorios',
+                error: true
+            })
+            return
+        }
+
+        await submitTarea({ nombre, descripcion, fechaEntrega, prioridad, proyecto: params.id})
+
+        setNombre('')
+        setDescripcion('')
+        setFechaEntrega('')
+        setPrioridad('')
+
+    }
+
+    const { msg } = alerta
 
     return (
         <Transition.Root show={ modalFormularioTarea } as={Fragment}>
@@ -68,8 +94,11 @@ const ModalFormularioTarea = () => {
                                         Crear Tarea
                                     </Dialog.Title>
 
+                                    {msg && <Alerta alerta={alerta} />}
+
                                     <form 
                                         className='my-10'
+                                        onSubmit={handleSubmit}
                                     >
                                         <div className='mb-5'>
                                             <label
