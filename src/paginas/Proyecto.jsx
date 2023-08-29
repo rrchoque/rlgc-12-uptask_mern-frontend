@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import ModalFormularioTarea from '../components/ModalFormularioTarea';
 import Tarea from '../components/Tarea';
 import ModalEliminarTarea from '../components/ModalEliminarTarea';
+import ModalEliminarColaborador from '../components/ModalEliminarColaborador'
 import Alerta from '../components/Alerta';
 import Colaborador from '../components/Colaborador';
 
@@ -88,6 +89,7 @@ const Proyecto = () => {
 
     <ModalFormularioTarea />
     <ModalEliminarTarea />
+    <ModalEliminarColaborador />
   </>
   )
 }
