@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import useProyectos from '../hooks/useProyectos'
+import Busqueda from './Busqueda'
 
 const Header = () => {
+
+    const { handleBuscador } = useProyectos()
 
   return (
     <header className="px-4 py-5 bg-white border-b">
@@ -9,13 +13,12 @@ const Header = () => {
                 UpTask
             </h2>
 
-            <input 
-                type="search" 
-                placeholder='Buscar Proyecto'
-                className='rounded-lg lg:w-96 block border'
-            />
-
             <div className='flex flex-col md:flex-row items-center gap-4'>
+                <button
+                    type="button"
+                    className='font-bold uppercase'
+                    onClick={handleBuscador}
+                >Buscar Proyecto</button>
                 <Link
                     to="/proyectos"
                     className='font-bold uppercase'
@@ -26,6 +29,7 @@ const Header = () => {
                     className='text-white text-sm bg-sky-600 p-3 rounded-md uppercase font-bold'
                 >Cerrar Sesión</button>
 
+                <Busqueda />
             </div>
         </div>
     </header>
