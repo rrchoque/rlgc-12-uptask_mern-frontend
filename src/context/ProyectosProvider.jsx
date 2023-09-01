@@ -410,12 +410,11 @@ const ProyectosProvider = ({children}) => {
             }
             const { data } = await clienteAxios.post(`/tareas/estado/${id}`, {}, config)
 
-            const proyectoActualizado = {...proyecto}
-            proyectoActualizado.tareas = proyectoActualizado.tareas.map( tareaState => tareaState._id === data._id ? data : tareaState )
-            setProyecto(proyectoActualizado)
-
             setTarea({})
             setAlerta({})
+
+            // socket
+            socket.emit('cambiar estado', data)
 
         } catch (error) {
             console.log(error.response)
