@@ -15,7 +15,7 @@ let socket;
 const Proyecto = () => {
 
   const params = useParams();
-  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareasProyecto, eliminarTareaProyecto } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareasProyecto, eliminarTareaProyecto, actualizarTareaProyecto } = useProyectos()
   const admin = useAdmin()
 
   useEffect( () => {
@@ -39,6 +39,13 @@ const Proyecto = () => {
         eliminarTareaProyecto(tareaEliminada)
       }
     })
+
+    socket.on('tarea actualizada', tareaActualizada => {
+      if(tareaActualizada.proyecto._id === proyecto._id) {
+        actualizarTareaProyecto(tareaActualizada)
+      }
+    })
+
   })
 
   const { nombre } = proyecto
