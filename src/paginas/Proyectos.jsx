@@ -4,7 +4,7 @@ import useProyectos from "../hooks/useProyectos"
 export const Proyectos = () => {
   
   const { proyectos, alerta } = useProyectos()
-  const { msg } = alerta
+  const { msg } = alerta
 
   return (
     <>

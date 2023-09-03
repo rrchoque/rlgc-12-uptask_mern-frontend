@@ -444,10 +444,17 @@ const ProyectosProvider = ({children}) => {
         proyectoActualizado.tareas = proyectoActualizado.tareas.map( tareaState => tareaState._id === tarea._id ? tarea : tareaState )
         setProyecto(proyectoActualizado)
     }
+
     const cambiarEstadoTarea = tarea => {
         const proyectoActualizado = {...proyecto}
         proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === tarea._id ? tarea : tareaState)
         setProyecto(proyectoActualizado)
+    }
+
+    const cerrarSesionProyectos = () => {
+        setProyectos([])
+        setProyecto({})
+        setAlerta({})
     }
 
     return (
@@ -482,6 +489,7 @@ const ProyectosProvider = ({children}) => {
                 eliminarTareaProyecto,
                 actualizarTareaProyecto,
                 cambiarEstadoTarea,
+                cerrarSesionProyectos
             }}
         >{children}
         </ProyectosContext.Provider>
