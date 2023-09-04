@@ -1,8 +1,38 @@
-# React + Vite
+# Proyecto: MERN - Gestión de proyectos (Frotend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto N° 12 del curso [React - La Guía Completa: Hooks Context Redux MERN +15 Apps](https://www.udemy.com/course/react-de-principiante-a-experto-creando-mas-de-10-aplicaciones/) de la plataforma Udemy dictado por [Juan Pablo De la torre Valdez](https://www.udemy.com/user/juanpablodelatorrevaldez/).
 
-Currently, two official plugins are available:
+# Tecnologías utilizadas
+Tecnología|Web oficial
+-|-
+React JS|[https://reactjs.org/](https://reactjs.org/)
+Vite|[https://vitejs.dev/](https://vitejs.dev/)
+Tailwind CSS|[https://tailwindcss.com/](https://tailwindcss.com/)
+Axios|[https://axios-http.com/](https://axios-http.com/)
+Socket.IO|[https://socket.io/](https://socket.io/)
+Custom Hooks||
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Instalación
+
+```bash
+$ npm install
+```
+
+## Ejecutando la aplicación
+
+```bash
+# development
+$ npm run dev
+```
+
+## Crea la aplicación
+
+```bash
+# build
+$ npm run build
+```
+![Login](<images/Captura de pantalla de 2023-09-03 23-37-04.png>)
+
+![Proyectos](<images/Captura de pantalla de 2023-09-03 23-39-36.png>)
+
+![Tareas](<images/Captura de pantalla de 2023-09-03 23-39-31.png>)
